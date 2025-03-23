@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <meta name="description" content="Movie recommendation site.">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/spapp.css">
+
+    <!-- jQuery (Always Load First) -->
+    <script src="assets/js/jquery.min.js"></script>
+
+    <!-- SPA Framework -->
+    <script src="assets/js/jquery.spapp.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/script.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">🎬 Movie Recommender</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#movies">Movies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#favorites">Favorites</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#recommendations">Recommendations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <section id="pageContent">
+        <main id="spapp" role="main">
+            <section id="home" data-load="home.html"></section>
+            <section id="movies" data-load="movies.html"></section>
+            <section id="favorites" data-load="favorites.html"></section>
+            <section id="recommendations" data-load="recommendations.html"></section>
+            <section id="profile" data-load="profile.html"></section>
+            <section id="reviews" data-load="reviews.html"></section>
+            <section id="login" data-load="login.html"></section>
+            <section id="register" data-load="register.html"></section>
+        </main>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Movie Recommender. All rights reserved.</p>
+    </footer>
+
+    <script>
+        var app = $.spapp({
+            defaultView: "#home",
+            templateDir: "views/"
+        });
+
+        app.run();
+    </script>
+
+</body>
+
+</html>

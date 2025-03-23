@@ -1,0 +1,418 @@
+<div class="video-background">
+    <div class="video-foreground">
+        <video autoplay muted loop src="https://videos.pexels.com/video-files/3134589/3134589-uhd_2560_1440_24fps.mp4" frameborder="0" allowfullscreen></video>
+    </div>
+    <!-- Add the overlay here -->
+    <div class="overlay"></div>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Movies and Series</h2>
+    <p class="text-center">Explore recommended movies and series here.</p>
+    
+    <!-- Button Group for Movies and Series -->
+    <div class="text-center mb-4">
+        <div class="btn-group" role="group" aria-label="Movies and Series Toggle">
+            <button type="button" class="btn btn-primary" id="showMovies">Movies</button>
+            <button type="button" class="btn btn-secondary" id="showSeries">Series</button>
+        </div>
+    </div>
+
+    <div class="row justify-content-center" id="moviesSection">
+        <!-- Movie Card Template -->
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/ZgZccxuj2RY?si=6htIUsaJfDUv9Iyr" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/movie1.jpg" class="card-img-top" alt="Movie 1">
+                <div class="card-body">
+                    <h5 class="card-title">The Flow</h5>
+                    <p class="card-text">Cat is a solitary animal, but as its home is devastated by a great flood, he finds refuge
+                         on a boat populated by various species, and will have to team up with them despite their differences.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/d9MyW72ELq0?si=y3mUr9LAROmS2zt8" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/movie2.jpg" class="card-img-top" alt="Movie 2">
+                <div class="card-body">
+                    <h5 class="card-title">Avatar</h5>
+                    <p class="card-text">A paraplegic Marine dispatched to the moon Pandora on 
+                        a unique mission becomes torn between following his orders and protecting
+                         the world he feels is his home.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/RFinNxS5KN4?si=PM6ODh5O511yIVqi" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/movie3.jpg" class="card-img-top" alt="Movie 3">
+                <div class="card-body">
+                    <h5 class="card-title">Jurassic World</h5>
+                    <p class="card-text">A new theme park, built on the original site of Jurassic Park, creates a genetically 
+                        modified hybrid dinosaur, the Indominus Rex, which escapes containment and goes on a killing spree.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/sFXGrTng0gQ?si=puYFb4LzCpbrw7eY" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/movie4.jpg" class="card-img-top" alt="Movie 4">
+                <div class="card-body">
+                    <h5 class="card-title">2012</h5>
+                    <p class="card-text">A frustrated writer struggles to keep his family alive 
+                        when a series of global catastrophes threatens to annihilate mankind.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/HWEW_qTLSEE?si=l2QCXNgKi14cimyR" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/movie5.jpg" class="card-img-top" alt="Movie 5">
+                <div class="card-body">
+                    <h5 class="card-title">Up</h5>
+                    <p class="card-text">78-year-old Carl Fredricksen travels to South America in 
+                        his house equipped with balloons, inadvertently taking a young stowaway.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/GokKUqLcvD8?si=g99lRCfFtHXn0rmk" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/movie6.jpg" class="card-img-top" alt="Movie 6">
+                <div class="card-body">
+                    <h5 class="card-title">The Dark Knight Rises</h5>
+                    <p class="card-text">Bane, an imposing terrorist, attacks Gotham City and 
+                        disrupts its eight-year-long period of peace. This forces Bruce 
+                        Wayne to come out of hiding and don the cape and cowl of Batman again.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/RFinNxS5KN4?si=PM6ODh5O511yIVqi" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/movie7.jpg" class="card-img-top" alt="Movie 7">
+                <div class="card-body">
+                    <h5 class="card-title">Dune: Part Two</h5>
+                    <p class="card-text">Paul Atreides unites with the Fremen while on a warpath of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life 
+                        and the fate of the universe, he endeavors to prevent a terrible future.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/5UnjrG_N8hU?si=8TOmKN9P9XcIrPv8" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/movie8.jpg" class="card-img-top" alt="Movie 8">
+                <div class="card-body">
+                    <h5 class="card-title">Star Wars: Episode III - Revenge of the Sith</h5>
+                    <p class="card-text">As the Clone Wars nears its end, 
+                        Obi-Wan Kenobi pursues a new threat, while Anakin Skywalker is 
+                        lured by Chancellor Palpatine into a sinister plot for galactic
+                         domination.
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add more movie cards here -->
+    </div>
+
+    <div class="row justify-content-center" id="seriesSection" style="display: none;">
+        <!-- Series Card Template -->
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/HhesaQXLuRY?si=7BnFPkEHwKIPX-mo" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/series1.jpg" class="card-img-top" alt="Series 1">
+                <div class="card-body">
+                    <h5 class="card-title">Breaking Bad</h5>
+                    <p class="card-text">A chemistry teacher diagnosed with inoperable lung cancer turns to
+                         manufacturing and selling methamphetamine with a former student to secure his family's future.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/s9APLXM9Ei8?si=7HBDo_KciJEJDfyi" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/series2.jpg" class="card-img-top" alt="Series 2">
+                <div class="card-body">
+                    <h5 class="card-title">Chernobyl</h5>
+                    <p class="card-text">In April 1986, the city of Chernobyl in the Soviet Union suffers one of the worst nuclear disasters in the history of mankind.
+                         Consequently, many heroes put their lives on the line in the following days, weeks and months.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/KPLWWIOCOOQ?si=2ATk4vnyvtAp4srT" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/series3.jpg" class="card-img-top" alt="Series 3">
+                <div class="card-body">
+                    <h5 class="card-title">Game of Thrones</h5>
+                    <p class="card-text">Nine noble families fight for control over the lands of Westeros,
+                         while an ancient enemy returns after being dormant for millennia.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/WNhH00OIPP0?si=Y4lEHcONSpyF7BE9" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/series4.jpg" class="card-img-top" alt="Series 4">
+                <div class="card-body">
+                    <h5 class="card-title">Rick and Morty</h5>
+                    <p class="card-text">The fractured domestic lives of a nihilistic mad scientist and his 
+                        anxious grandson are further complicated by their inter-dimensional misadventures.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/fXmAurh012s?si=0ADcEOpNSomjEg2W" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/series5.jpg" class="card-img-top" alt="Series 5">
+                <div class="card-body">
+                    <h5 class="card-title">Arcane</h5>
+                    <p class="card-text">Amid the stark discord of twin cities Piltover and Zaun, two sisters fight on 
+                        rival sides of a war between magic technologies and clashing convictions.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/uLtkt8BonwM?si=jtk-BAQJf-WYQUx7" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/series6.jpg" class="card-img-top" alt="Series 6">
+                <div class="card-body">
+                    <h5 class="card-title">The Last of Us</h5>
+                    <p class="card-text">After a global pandemic destroys civilization, a hardened survivor takes 
+                        charge of a 14-year-old girl who may be humanity's last hope.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/-bfAVpuko5o?si=HD-g60R-aNj8Zjqb" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/series7.jpg" class="card-img-top" alt="Series 7">
+                <div class="card-body">
+                    <h5 class="card-title">Invincible</h5>
+                    <p class="card-text">An adult animated series based on the Skybound/Image comic about a teenager 
+                        whose father is the most powerful superhero on the planet.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/aOC8E8z_ifw?si=fdTLLusnpOY1JnrL" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/series8.jpg" class="card-img-top" alt="Series 1">
+                <div class="card-body">
+                    <h5 class="card-title">The Mandalorian</h5>
+                    <p class="card-text">The travels of a lone bounty hunter in the outer reaches of the galaxy,
+                         far from the authority of the New Republic.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary add-to-favorites">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add more series cards here -->
+    </div>
+</div>
+
+<script>
+    document.getElementById('showMovies').addEventListener('click', function() {
+        document.getElementById('moviesSection').style.display = 'flex';
+        document.getElementById('seriesSection').style.display = 'none';
+        this.classList.add('btn-primary');
+        this.classList.remove('btn-secondary');
+        document.getElementById('showSeries').classList.add('btn-secondary');
+        document.getElementById('showSeries').classList.remove('btn-primary');
+    });
+
+    document.getElementById('showSeries').addEventListener('click', function() {
+        document.getElementById('moviesSection').style.display = 'none';
+        document.getElementById('seriesSection').style.display = 'flex';
+        this.classList.add('btn-primary');
+        this.classList.remove('btn-secondary');
+        document.getElementById('showMovies').classList.add('btn-secondary');
+        document.getElementById('showMovies').classList.remove('btn-primary');
+    });
+
+    document.querySelectorAll('.add-to-favorites').forEach(button => {
+        button.addEventListener('click', function() {
+            const card = this.closest('.card');
+            const title = card.querySelector('.card-title').textContent;
+            const text = card.querySelector('.card-text').textContent;
+            const imgSrc = card.querySelector('.card-img-top').src;
+            const playLink = card.querySelector('.play-button').parentElement.href;
+
+            const favoriteCard = `
+                <div class="col-md-3">
+                    <div class="card mb-4 shadow-sm h-100">
+                        <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                            <a href="${playLink}" target="_blank">
+                                <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                            </a>
+                        </div>
+                        <img src="${imgSrc}" class="card-img-top" alt="${title}">
+                        <div class="card-body">
+                            <h5 class="card-title">${title}</h5>
+                            <p class="card-text">${text}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <button type="button" class="btn btn-sm btn-danger remove-button">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('favoritesSection').insertAdjacentHTML('beforeend', favoriteCard);
+            updateRemoveButtons();
+        });
+    });
+
+    function updateRemoveButtons() {
+        document.querySelectorAll('.remove-button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.col-md-3').remove();
+                // Add logic to update the favorites list and handle empty state if needed
+            });
+        });
+    }
+
+    updateRemoveButtons();
+</script>

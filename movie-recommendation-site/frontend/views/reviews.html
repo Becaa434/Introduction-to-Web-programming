@@ -1,0 +1,204 @@
+<div class="video-background">
+    <div class="video-foreground">
+        <video autoplay muted loop src="https://videos.pexels.com/video-files/7985881/7985881-uhd_2732_1440_25fps.mp4" frameborder="0" allowfullscreen></video>
+    </div>
+    <!-- Add the overlay here -->
+    <div class="overlay"></div>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">User Reviews</h2>
+    <p class="text-center">Read and share reviews of your favorite movies and series.</p>
+
+    <!-- User Reviews Section -->
+    <div class="row justify-content-center" id="userReviewsSection">
+        <!-- Review Card Template -->
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Jurassic World</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">by John Doe</h6>
+                    <p class="card-text">A new theme park, built on the original site of Jurassic Park, creates a genetically modified hybrid dinosaur, the Indominus Rex, which escapes containment and goes on a killing spree.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">4.5/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add more review cards here -->
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">The Flow</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">by Jane Smith</h6>
+                    <p class="card-text">Cat is a solitary animal, but as its home is devastated by a great flood, he finds refuge on a boat populated by various species, and will have to team up with them despite their differences.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">4.8/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Avatar</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">by Alice Johnson</h6>
+                    <p class="card-text">A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">4.7/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">The Mandalorian</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">by Luke Skywalker</h6>
+                    <p class="card-text">The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">4.9/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Invincible</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">by Mark Grayson</h6>
+                    <p class="card-text">An adult animated series based on the Skybound/Image comic about a teenager whose father is the most powerful superhero on the planet.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">4.8/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">The Witcher</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">by Geralt of Rivia</h6>
+                    <p class="card-text">Geralt of Rivia, a mutated monster-hunter for hire, journeys toward his destiny in a turbulent world where people often prove more wicked than beasts.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">4.7/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Review Section -->
+    <h3 class="mb-4 text-center">Submit Your Review</h3>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card form-card">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="movieTitle">Movie Title</label>
+                            <input type="text" class="form-control" id="movieTitle" placeholder="Enter the movie title">
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewerName">Your Name</label>
+                            <input type="text" class="form-control" id="reviewerName" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewText">Your Review</label>
+                            <textarea class="form-control" id="reviewText" rows="3" placeholder="Write your review"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="rating">Rating</label>
+                            <select class="form-control" id="rating">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="movieImage">Upload Movie Image</label>
+                            <input type="file" class="form-control-file" id="movieImage">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Rated Movies Section -->
+    <h3 class="mb-4 text-center">Top Rated Movies</h3>
+    <div class="row justify-content-center" id="topRatedMoviesSection">
+        <!-- Movie Card Template -->
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/ZgZccxuj2RY?si=6htIUsaJfDUv9Iyr" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/movie1.jpg" class="card-img-top" alt="Movie 1">
+                <div class="card-body">
+                    <h5 class="card-title">The Flow</h5>
+                    <p class="card-text">Cat is a solitary animal, but as its home is devastated by a great flood, he finds refuge on a boat populated by various species, and will have to team up with them despite their differences.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">4.8/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/d9MyW72ELq0?si=y3mUr9LAROmS2zt8" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/movie2.jpg" class="card-img-top" alt="Movie 2">
+                <div class="card-body">
+                    <h5 class="card-title">Avatar</h5>
+                    <p class="card-text">A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">4.7/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/aOC8E8z_ifw?si=fdTLLusnpOY1JnrL" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/series8.jpg" class="card-img-top" alt="Series 1">
+                <div class="card-body">
+                    <h5 class="card-title">The Mandalorian</h5>
+                    <p class="card-text">The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">4.9/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-img-overlay d-flex justify-content-center align-items-center">
+                    <a href="https://youtu.be/-bfAVpuko5o?si=HD-g60R-aNj8Zjqb" target="_blank">
+                        <img src="assets/img/play-button.png" alt="Play" class="play-button">
+                    </a>
+                </div>
+                <img src="assets/img/series7.jpg" class="card-img-top" alt="Series 7">
+                <div class="card-body">
+                    <h5 class="card-title">Invincible</h5>
+                    <p class="card-text">An adult animated series based on the Skybound/Image comic about a teenager whose father is the most powerful superhero on the planet.</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge bg-primary">4.8/5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
