@@ -1,0 +1,38 @@
+<div class="video-background">
+    <div class="video-foreground">
+        <video autoplay muted loop src="https://videos.pexels.com/video-files/8273664/8273664-uhd_2732_1440_25fps.mp4" frameborder="0" allowfullscreen></video>
+    </div>
+    <!-- Add the overlay here -->
+    <div class="overlay"></div>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">My Favorites</h2>
+    <p class="text-center">Your favorite movies and series are listed here.</p>
+
+    <!-- Favorites Section -->
+    <div class="row justify-content-center" id="favoritesSection">
+        <!-- Movie Card Template with Remove Button -->
+
+
+        <!-- Add more favorite movie cards here -->
+    </div>
+
+    <!-- Empty State (if no favorites) -->
+    <div class="row" id="empty-state" style="display: none;">
+        <div class="col-md-12 text-center">
+            <h3>No Favorites Yet</h3>
+            <p>Start adding your favorite movies to see them here!</p>
+            <a href="#movies" class="btn btn-primary">Explore Movies</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.remove-button').forEach(button => {
+        button.addEventListener('click', function() {
+            this.closest('.col-md-3').remove();
+            // Add logic to update the favorites list and handle empty state if needed
+        });
+    });
+</script>
