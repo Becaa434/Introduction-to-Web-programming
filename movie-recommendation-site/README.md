@@ -1,43 +1,16 @@
-# Movie Recommendation App
+# Movie Recommendation Site
 
 ## Overview
-The Movie Recommendation App is a single-page web application designed to help users discover new movies based on their preferences. The application features user authentication, a dashboard for managing recommendations, and a responsive design to ensure a seamless experience across devices.
-
-## Project Structure
-```
-movie-recommendation-app
-├── src
-│   ├── css
-│   │   └── styles.css
-│   ├── js
-│   │   └── app.js
-│   └── index.html
-└── README.md
-```
-
-## Technologies Used
-- HTML
-- CSS
-- JavaScript
+A web application to explore, review, and favorite movies and series. Users receive personalized recommendations based on their preferences.
 
 ## Features
-- User authentication (Register/Login)
-- Movie recommendations based on user preferences
-- Responsive design for mobile and desktop devices
+- User authentication
+- Browse movies and series
+- Submit reviews and ratings
+- Mark favorites
+- Get personalized recommendations
 
-## Setup Instructions
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory:
-   ```
-   cd movie-recommendation-app
-   ```
-3. Open `src/index.html` in your web browser to view the application.
-
-## Contributing
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
-
-## License
-This project is licensed under the MIT License.
+## Technologies
+- Frontend: HTML, CSS, JavaScript, Bootstrap
+- Backend: PHP (with XAMPP)
+- Database: MySQL
