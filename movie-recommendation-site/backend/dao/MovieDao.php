@@ -6,6 +6,15 @@ class MovieDao extends BaseDao {
     public function __construct() {
         parent::__construct("movies");
     }
+
+
+    public function getById($id) {
+        $stmt = $this->connection->prepare("SELECT * FROM $this->table WHERE id = :id");
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);  // Use bindValue and set type
+        $stmt->execute();
+        $movie = $stmt->fetch();
+        return $movie ?: null;
+    }
     
     public function getByTitle($title) {
         $stmt = $this->connection->prepare("SELECT * FROM movies WHERE title LIKE :title");
