@@ -14,16 +14,16 @@
                     <h2>Login</h2>
                 </div>
                 <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+                    <form id="login-form">
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block w-100">Login</button>
                     </form>
                 </div>
                 <div class="card-footer text-center">
@@ -32,7 +32,28 @@
             </div>
         </div>
     </div>
-    <br>
-    <br>
 </div>
-
+<br><br>   
+<br><br>  
+<br><br>   
+<br><br> 
+<br><br>   
+<br><br>  
+<br><br>   
+<br>
+   
+  
+<script type="text/javascript">
+    UserService.init();
+</script>
+<script type="text/javascript">
+    // Initialize UserService when login page loads
+    $(document).ready(function() {
+        console.log("Login page loaded, initializing UserService");
+        if (typeof UserService !== 'undefined') {
+            UserService.init();
+        } else {
+            console.error("UserService not found!");
+        }
+    });
+</script>

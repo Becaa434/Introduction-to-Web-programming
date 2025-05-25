@@ -24,7 +24,12 @@ class BaseDao {
         return $stmt->fetch();
     }
 
-    // The insert method should be here and should be inherited by UserDao
+    // Add the create method that AuthService is calling
+    public function create($data) {
+        return $this->insert($data);
+    }
+
+    // The insert method
     public function insert($data) {
         $columns = implode(", ", array_keys($data));
         $placeholders = ":" . implode(", :", array_keys($data));
@@ -37,7 +42,6 @@ class BaseDao {
             return false; // insertion failed
         }
     }
-    
 
     public function update($id, $data) {
         $fields = "";
@@ -56,7 +60,12 @@ class BaseDao {
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
-}
 
+    protected function query_unique($query, $params = []) {
+        $stmt = $this->connection->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetch();
+    }
+}
 
 ?>

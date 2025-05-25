@@ -29,6 +29,7 @@ class FavoriteDao extends BaseDao {
         return $stmt->rowCount() > 0;
     }
     
+    
     public function getUserFavoriteMovies($userId) {
         $stmt = $this->connection->prepare("
             SELECT m.* FROM movies m

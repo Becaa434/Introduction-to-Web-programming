@@ -1,5 +1,14 @@
 <?php
 /**
+ * Movie Routes
+ * Implements role-based access control for movie operations
+ */
+
+/**
+ * Public endpoints - No authentication required
+ */
+
+/**
  * @OA\Get(
  *     path="/movies",
  *     tags={"movies"},
@@ -85,10 +94,15 @@ Flight::route('GET /movies/year/@year', function($year){
 });
 
 /**
+ * Protected endpoints - Admin only
+ */
+
+/**
  * @OA\Post(
  *     path="/movies",
  *     tags={"movies"},
- *     summary="Add a new movie",
+ *     summary="Add a new movie (Admin only)",
+ *     security={{"BearerAuth": {}}},
  *     @OA\RequestBody(
  *         required=true,
  *         @OA\JsonContent(
@@ -108,19 +122,59 @@ Flight::route('GET /movies/year/@year', function($year){
  *     @OA\Response(
  *         response=400,
  *         description="Invalid input data"
+ *     ),
+ *     @OA\Response(
+ *         response=403,
+ *         description="Forbidden - Admin access required"
  *     )
  * )
  */
 Flight::route('POST /movies', function(){
-    $data = Flight::request()->data->getData();
-    Flight::json(Flight::movieService()->createMovie($data));
+    try {
+        // Get authentication token
+        $token = Flight::request()->getHeader('Authentication') ?: 
+                 Flight::request()->getHeader('Authorization');
+        
+        // Verify token first
+        Flight::auth_middleware()->verifyToken($token);
+        
+        // Then check if user has admin role
+        Flight::auth_middleware()->authorizeRole('admin');
+        
+        // If authorized, create movie
+        $data = Flight::request()->data->getData();
+        $result = Flight::movieService()->createMovie($data);
+        
+        if ($result) {
+            Flight::json([
+                'message' => 'Movie created successfully',
+                'data' => $result
+            ]);
+        } else {
+            Flight::halt(400, json_encode([
+                'message' => 'Failed to create movie'
+            ]));
+        }
+    } catch (\Exception $e) {
+        // Determine appropriate status code
+        $statusCode = 401; // Default to unauthorized
+        if (strpos($e->getMessage(), 'Insufficient permissions') !== false || 
+            strpos($e->getMessage(), 'Access denied') !== false) {
+            $statusCode = 403; // Forbidden for role-based access issues
+        }
+        
+        Flight::halt($statusCode, json_encode([
+            'message' => $e->getMessage()
+        ]));
+    }
 });
 
 /**
  * @OA\Put(
  *     path="/movies/{id}",
  *     tags={"movies"},
- *     summary="Update movie by ID",
+ *     summary="Update movie by ID (Admin only)",
+ *     security={{"BearerAuth": {}}},
  *     @OA\Parameter(
  *         name="id",
  *         in="path",
@@ -147,19 +201,57 @@ Flight::route('POST /movies', function(){
  *     @OA\Response(
  *         response=404,
  *         description="Movie not found"
+ *     ),
+ *     @OA\Response(
+ *         response=403,
+ *         description="Forbidden - Admin access required"
  *     )
  * )
  */
 Flight::route('PUT /movies/@id', function($id){
-    $data = Flight::request()->data->getData();
-    Flight::json(Flight::movieService()->updateMovie($id, $data));
+    try {
+        // Get authentication token
+        $token = Flight::request()->getHeader('Authentication') ?: 
+                 Flight::request()->getHeader('Authorization');
+        
+        // Verify token first
+        Flight::auth_middleware()->verifyToken($token);
+        
+        // Check if user is admin
+        Flight::auth_middleware()->authorizeRole('admin');
+        
+        $data = Flight::request()->data->getData();
+        $result = Flight::movieService()->updateMovie($id, $data);
+        
+        if ($result) {
+            Flight::json([
+                'message' => 'Movie updated successfully'
+            ]);
+        } else {
+            Flight::halt(404, json_encode([
+                'message' => 'Movie not found or update failed'
+            ]));
+        }
+    } catch (\Exception $e) {
+        // Determine appropriate status code
+        $statusCode = 401; // Default to unauthorized
+        if (strpos($e->getMessage(), 'Insufficient permissions') !== false || 
+            strpos($e->getMessage(), 'Access denied') !== false) {
+            $statusCode = 403; // Forbidden for role-based access issues
+        }
+        
+        Flight::halt($statusCode, json_encode([
+            'message' => $e->getMessage()
+        ]));
+    }
 });
 
 /**
  * @OA\Patch(
  *     path="/movies/{id}",
  *     tags={"movies"},
- *     summary="Partial update movie by ID",
+ *     summary="Partial update movie by ID (Admin only)",
+ *     security={{"BearerAuth": {}}},
  *     @OA\Parameter(
  *         name="id",
  *         in="path",
@@ -184,19 +276,57 @@ Flight::route('PUT /movies/@id', function($id){
  *     @OA\Response(
  *         response=404,
  *         description="Movie not found"
+ *     ),
+ *     @OA\Response(
+ *         response=403,
+ *         description="Forbidden - Admin access required"
  *     )
  * )
  */
 Flight::route('PATCH /movies/@id', function($id){
-    $data = Flight::request()->data->getData();
-    Flight::json(Flight::movieService()->partialUpdateMovie($id, $data));
+    try {
+        // Get authentication token
+        $token = Flight::request()->getHeader('Authentication') ?: 
+                 Flight::request()->getHeader('Authorization');
+        
+        // Verify token first
+        Flight::auth_middleware()->verifyToken($token);
+        
+        // Check if user is admin
+        Flight::auth_middleware()->authorizeRole('admin');
+        
+        $data = Flight::request()->data->getData();
+        $result = Flight::movieService()->partialUpdateMovie($id, $data);
+        
+        if ($result) {
+            Flight::json([
+                'message' => 'Movie partially updated successfully'
+            ]);
+        } else {
+            Flight::halt(404, json_encode([
+                'message' => 'Movie not found or update failed'
+            ]));
+        }
+    } catch (\Exception $e) {
+        // Determine appropriate status code
+        $statusCode = 401; // Default to unauthorized
+        if (strpos($e->getMessage(), 'Insufficient permissions') !== false || 
+            strpos($e->getMessage(), 'Access denied') !== false) {
+            $statusCode = 403; // Forbidden for role-based access issues
+        }
+        
+        Flight::halt($statusCode, json_encode([
+            'message' => $e->getMessage()
+        ]));
+    }
 });
 
 /**
  * @OA\Delete(
  *     path="/movies/{id}",
  *     tags={"movies"},
- *     summary="Delete movie by ID",
+ *     summary="Delete movie by ID (Admin only)",
+ *     security={{"BearerAuth": {}}},
  *     @OA\Parameter(
  *         name="id",
  *         in="path",
@@ -211,10 +341,240 @@ Flight::route('PATCH /movies/@id', function($id){
  *     @OA\Response(
  *         response=404,
  *         description="Movie not found"
+ *     ),
+ *     @OA\Response(
+ *         response=403,
+ *         description="Forbidden - Admin access required"
  *     )
  * )
  */
 Flight::route('DELETE /movies/@id', function($id){
-    Flight::json(Flight::movieService()->delete($id));
+    try {
+        // Get authentication token
+        $token = Flight::request()->getHeader('Authentication') ?: 
+                 Flight::request()->getHeader('Authorization');
+        
+        // Verify token first
+        Flight::auth_middleware()->verifyToken($token);
+        
+        // Check if user is admin
+        Flight::auth_middleware()->authorizeRole('admin');
+        
+        $result = Flight::movieService()->delete($id);
+        
+        if ($result) {
+            Flight::json([
+                'message' => 'Movie deleted successfully'
+            ]);
+        } else {
+            Flight::halt(404, json_encode([
+                'message' => 'Movie not found or delete failed'
+            ]));
+        }
+    } catch (\Exception $e) {
+        // Determine appropriate status code
+        $statusCode = 401; // Default to unauthorized
+        if (strpos($e->getMessage(), 'Insufficient permissions') !== false || 
+            strpos($e->getMessage(), 'Access denied') !== false) {
+            $statusCode = 403; // Forbidden for role-based access issues
+        }
+        
+        Flight::halt($statusCode, json_encode([
+            'message' => $e->getMessage()
+        ]));
+    }
 });
-?>
+
+/**
+ * User Movies Endpoints - Available to authenticated users
+ */
+
+/**
+ * @OA\Get(
+ *     path="/user/movies/favorites",
+ *     tags={"user", "movies"},
+ *     summary="Get user's favorite movies",
+ *     security={{"BearerAuth": {}}},
+ *     @OA\Response(
+ *         response=200,
+ *         description="List of user's favorite movies"
+ *     ),
+ *     @OA\Response(
+ *         response=401,
+ *         description="Unauthorized"
+ *     )
+ * )
+ */
+Flight::route('GET /user/movies/favorites', function() {
+    try {
+        // Get authentication token
+        $token = Flight::request()->getHeader('Authentication') ?: 
+                 Flight::request()->getHeader('Authorization');
+        
+        // Verify token first
+        Flight::auth_middleware()->verifyToken($token);
+        
+        // Allow both user and admin roles
+        Flight::auth_middleware()->authorizeRole(['user', 'admin']);
+        
+        $user = Flight::get('user');
+        $userId = is_object($user) ? $user->id : $user['id'];
+        
+        $favorites = Flight::favoriteService()->getUserFavoriteMovies($userId);
+        
+        Flight::json([
+            'data' => $favorites
+        ]);
+    } catch (\Exception $e) {
+        // Determine appropriate status code
+        $statusCode = 401; // Default to unauthorized
+        if (strpos($e->getMessage(), 'Insufficient permissions') !== false || 
+            strpos($e->getMessage(), 'Access denied') !== false) {
+            $statusCode = 403; // Forbidden for role-based access issues
+        }
+        
+        Flight::halt($statusCode, json_encode([
+            'message' => $e->getMessage()
+        ]));
+    }
+});
+
+/**
+ * @OA\Post(
+ *     path="/user/movies/favorites/{movie_id}",
+ *     tags={"user", "movies"},
+ *     summary="Add a movie to user's favorites",
+ *     security={{"BearerAuth": {}}},
+ *     @OA\Parameter(
+ *         name="movie_id",
+ *         in="path",
+ *         required=true,
+ *         description="ID of the movie to add to favorites",
+ *         @OA\Schema(type="integer", example=1)
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Movie added to favorites successfully"
+ *     ),
+ *     @OA\Response(
+ *         response=401,
+ *         description="Unauthorized"
+ *     ),
+ *     @OA\Response(
+ *         response=500,
+ *         description="Failed to add movie to favorites"
+ *     )
+ * )
+ */
+Flight::route('POST /user/movies/favorites/@movie_id', function($movie_id) {
+    try {
+        // Get authentication token
+        $token = Flight::request()->getHeader('Authentication') ?: 
+                 Flight::request()->getHeader('Authorization');
+        
+        // Verify token first
+        Flight::auth_middleware()->verifyToken($token);
+        
+        // Allow both user and admin roles
+        Flight::auth_middleware()->authorizeRole(['user', 'admin']);
+        
+        $user = Flight::get('user');
+        $userId = is_object($user) ? $user->id : $user['id'];
+        
+        $data = [
+            'user_id' => $userId,
+            'movie_id' => $movie_id,
+            'added_at' => date('Y-m-d H:i:s')
+        ];
+        
+        $result = Flight::favoriteService()->create($data);
+        
+        if ($result) {
+            Flight::json([
+                'message' => 'Movie added to favorites'
+            ]);
+        } else {
+            Flight::halt(500, json_encode([
+                'message' => 'Failed to add movie to favorites'
+            ]));
+        }
+    } catch (\Exception $e) {
+        // Determine appropriate status code
+        $statusCode = 401; // Default to unauthorized
+        if (strpos($e->getMessage(), 'Insufficient permissions') !== false || 
+            strpos($e->getMessage(), 'Access denied') !== false) {
+            $statusCode = 403; // Forbidden for role-based access issues
+        }
+        
+        Flight::halt($statusCode, json_encode([
+            'message' => $e->getMessage()
+        ]));
+    }
+});
+
+/**
+ * @OA\Delete(
+ *     path="/user/movies/favorites/{movie_id}",
+ *     tags={"user", "movies"},
+ *     summary="Remove a movie from user's favorites",
+ *     security={{"BearerAuth": {}}},
+ *     @OA\Parameter(
+ *         name="movie_id",
+ *         in="path",
+ *         required=true,
+ *         description="ID of the movie to remove from favorites",
+ *         @OA\Schema(type="integer", example=1)
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Movie removed from favorites successfully"
+ *     ),
+ *     @OA\Response(
+ *         response=401,
+ *         description="Unauthorized"
+ *     ),
+ *     @OA\Response(
+ *         response=404,
+ *         description="Favorite not found or remove failed"
+ *     )
+ * )
+ */
+Flight::route('DELETE /user/movies/favorites/@movie_id', function($movie_id) {
+    try {
+        // Get authentication token
+        $token = Flight::request()->getHeader('Authentication') ?: 
+                 Flight::request()->getHeader('Authorization');
+        
+        // Verify token first
+        Flight::auth_middleware()->verifyToken($token);
+        
+        // Allow both user and admin roles
+        Flight::auth_middleware()->authorizeRole(['user', 'admin']);
+        
+        $user = Flight::get('user');
+        $userId = is_object($user) ? $user->id : $user['id'];
+        
+        $result = Flight::favoriteService()->removeFavorite($userId, $movie_id);
+        
+        if ($result) {
+            Flight::json([
+                'message' => 'Movie removed from favorites'
+            ]);
+        } else {
+            Flight::halt(404, json_encode([
+                'message' => 'Favorite not found or remove failed'
+            ]));
+        }
+    } catch (\Exception $e) {
+        // Determine appropriate status code
+        $statusCode = 401; // Default to unauthorized
+        if (strpos($e->getMessage(), 'Insufficient permissions') !== false || 
+            strpos($e->getMessage(), 'Access denied') !== false) {
+            $statusCode = 403; // Forbidden for role-based access issues
+        }
+        
+        Flight::halt($statusCode, json_encode([
+            'message' => $e->getMessage()
+        ]));
+    }
+});

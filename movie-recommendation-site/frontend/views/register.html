@@ -2,7 +2,6 @@
     <div class="video-foreground">
         <video autoplay muted loop src="https://videos.pexels.com/video-files/7985887/7985887-uhd_2732_1440_25fps.mp4" frameborder="0" allowfullscreen></video>
     </div>
-    <!-- Add the overlay here -->
     <div class="overlay"></div>
 </div>
 
@@ -14,24 +13,34 @@
                     <h2>Register</h2>
                 </div>
                 <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+                    <form id="register-form">
+                        <div class="form-group mb-3">
+                            <label for="name">Full Name *</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+                        <div class="form-group mb-3">
+                            <label for="email">Email *</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password">
+                        <div class="form-group mb-3">
+                            <label for="password">Password *</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password (min 6 characters)" required minlength="6">
                         </div>
-                        <div class="form-group">
-                            <label for="confirm-password">Confirm Password</label>
-                            <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm your password">
+                        <div class="form-group mb-3">
+                            <label for="confirm-password">Confirm Password *</label>
+                            <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        
+                        <!-- Hidden role field for testing - remove in production -->
+                        <div class="form-group mb-3" style="display: none;">
+                            <label for="role">Role (for testing)</label>
+                            <select class="form-control" id="role" name="role">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block w-100">Register</button>
                     </form>
                 </div>
                 <div class="card-footer text-center">
@@ -41,4 +50,22 @@
         </div>
     </div>
 </div>
+
+
+<script>
+$(document).ready(function() {
+    console.log("Register page loaded, initializing UserService");
+    if (typeof UserService !== 'undefined') {
+        UserService.init();
+    } else {
+        console.error("UserService not found!");
+    }
+});
+</script>
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br>
 
