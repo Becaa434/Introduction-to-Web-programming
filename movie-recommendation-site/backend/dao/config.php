@@ -1,5 +1,9 @@
 <?php
-
+// reporting (helpful during development)
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL ^ (E_NOTICE | E_DEPRECATED));
+//     * Authenticate user and generate JWT token
 class Config {
     private static $host = 'localhost';
     private static $dbName = 'movierecommendation';
@@ -25,8 +29,14 @@ class Config {
         }
         return self::$connection;
     }
+    
+    /**
+     * JWT Secret Key for token encryption/decryption
+     * @return string The secret key
+     */
+    public static function JWT_SECRET() {
+        return 'movierecommendation_secret_key_2025';
+    }
 }
 
 ?>
-
-

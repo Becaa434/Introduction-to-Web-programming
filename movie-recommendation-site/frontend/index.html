@@ -45,7 +45,8 @@
                     <li class="nav-item"><a class="nav-link" href="#favorites">Favorites</a></li>
                     <li class="nav-item"><a class="nav-link" href="#recommendations">Recommendations</a></li>
                     <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#register">Register</a></li>
                 </ul>
             </div>
         </div>
@@ -58,7 +59,6 @@
             <section id="movies" data-load="movies.html"></section>
             <section id="favorites" data-load="favorites.html"></section>
             <section id="recommendations" data-load="recommendations.html"></section>
-            <section id="profile" data-load="profile.html"></section>
             <section id="reviews" data-load="reviews.html"></section>
             <section id="login" data-load="login.html"></section>
             <section id="register" data-load="register.html"></section>
@@ -77,6 +77,45 @@
         });
 
         app.run();
+    </script>
+     <!-- jQuery Validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
+    <!-- Toastr for notifications -->
+    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+    
+    <!-- Your utility files -->
+    <script src="utils/constants.js"></script>
+    <script src="utils/rest-client.js"></script>
+    <script src="utils/utils.js"></script>
+    
+    <!-- Your service files -->
+    <script src="services/user-service.js"></script>
+    <script src="services/movie-service.js"></script>
+    
+
+
+    <!-- Initialize services when SPA content loads -->
+    <script>
+        $(document).ready(function() {
+            // Initialize when page first loads
+            setTimeout(function() {
+                if (typeof UserService !== 'undefined') {
+                    UserService.init();
+                }
+            }, 1000);
+            
+            // Re-initialize when navigating between SPA sections
+            $(document).on('click', 'a[href^="#"]', function() {
+                setTimeout(function() {
+                    if (typeof UserService !== 'undefined') {
+                        UserService.init();
+                    }
+                }, 500);
+            });
+        });
     </script>
 
 </body>
