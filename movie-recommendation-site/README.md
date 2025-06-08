@@ -1,82 +1,50 @@
-# Movie Recommendation Site
+Movie Recommendation System
 
-## Overview
-A modern web application for exploring and managing movies with role-based access control. The application provides a comprehensive movie browsing experience with admin management capabilities and community-driven content.
+Deployed Link: https://introduction-to-web-programming-production.up.railway.app
 
-## Features
+This is a movie recommendation website where users can:
 
-### Core Features
-- **Movie Browsing**: Explore a curated collection of movies with detailed information
-- **Search & Filter**: Find movies by title, genre, or release year
-- **Community Favorites**: View most loved movies by the community
-- **Personalized Recommendations**: Get movie suggestions based on trending and popular content
-- **Movie Reviews**: Read community reviews and ratings
+Register and login to their account
+Search for movies in the database
+Add movies to their favorites list
+Leave reviews and ratings for movies
+View reviews from other users
 
-###  Authentication & Authorization
-- **User Registration & Login**: Secure JWT-based authentication
-- **Role-Based Access Control**: 
-  - **Admin Users**: Full CRUD operations on movies (Create, Read, Update, Delete)
-  - **Regular Users**: Browse and view movies (Read-only access)
-- **Password Security**: Hashed password storage for user protection
+Admin Features:
 
-###  Admin Features
-- **Movie Management**: Add, edit, and delete movies from the database
-- **Dynamic Admin Panel**: Admin-only buttons and management interface
-- **Form Validation**: Comprehensive validation for movie data entry
-- **Modal-Based Interface**: User-friendly modal forms for CRUD operations
+Add new movies to the database
+Edit existing movie information
+Delete movies from the system
+Add recommended movies for user
 
+Technologies I Used
+Frontend:
 
-## Technologies
+HTML, CSS, JavaScript
+jQuery for form validation
+Bootstrap for styling
 
-### Frontend
-- **HTML5**: Semantic markup and structure
-- **CSS3**: Custom styling with Bootstrap 5.3.3
-- **JavaScript (ES6+)**: Modern JavaScript with jQuery
-- **Bootstrap 5**: Responsive UI framework
-- **jQuery**: DOM manipulation and AJAX requests
-- **SPA Framework**: jquery.spapp for single-page application routing
+Backend:
 
-### Backend
-- **PHP**: Server-side scripting with FlightPHP framework
-- **MySQL**: Relational database for data storage
-- **JWT Authentication**: JSON Web Token for secure authentication
-- **RESTful API**: Clean API endpoints for frontend communication
+PHP for server-side logic
+MySQL database
+JWT tokens for user authentication
 
-### Development Tools
-- **XAMPP**: Local development environment
-- **Git**: Version control
-- **Browser DevTools**: Debugging and testing
+Deployment:
+Railway cloud platform
 
-## API Endpoints
+How to Run Locally
 
-## Setup Instructions
+Clone this repository
+Set up XAMPP with Apache and MySQL
+Import the database from database/schema.sql
+Put the project in htdocs folder
+Open http://localhost/movie-recommendation-site in browser
 
-### Prerequisites
-- XAMPP (Apache + MySQL + PHP)
-- Modern web browser
-- Git (optional)
+Security Features:
 
-### Installation
+Password requirements (minimum 8 characters, must include uppercase, lowercase, numbers)
+Email validation
+Secure password storage
+Protection against common web attacks
 
-1. **Clone/Download the project**
-   ```bash
-   git clone https://github.com/Becaa434/Introduction-to-Web-programming.git
-   cd movie-recommendation-site
-   ```
-
-2. **Setup Backend**
-   - Place backend files in XAMPP's `htdocs` directory
-   - Start XAMPP (Apache + MySQL)
-   - Import database schema
-   - Configure database connection in backend
-
-3. **Setup Frontend**
-   - Update `utils/constants.js` with correct backend URL
-   - Ensure all file paths are correct
-
-4. **Access the Application**
-   - Open `http://localhost/AdiBeca/Introduction-to-Web-programming/movie-recommendation-site/frontend/`
-   - Register a new account or login with existing credentials
-
-
-**© 2025 Movie Recommendation Site. All rights reserved.**
