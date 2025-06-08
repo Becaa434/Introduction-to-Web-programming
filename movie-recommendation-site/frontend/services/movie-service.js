@@ -113,46 +113,17 @@ var MovieService = {
         }
         
         movies.forEach(movie => {
-            // Only show admin buttons for admins 
-            const adminButtons = isAdmin ? `
-                <div class="d-flex flex-wrap gap-1 mt-auto">
-                    <button type="button" class="btn btn-sm btn-warning me-1 mb-1" 
-                            onclick="MovieService.openEditModal(${movie.id})">
-                        Edit
-                    </button>
-                    <button type="button" class="btn btn-sm btn-danger mb-1" 
-                            onclick="MovieService.openConfirmationDialog(${movie.id}, '${movie.title}')">
-                        Delete
-                    </button>
-                </div>
-            ` : '';
-            
+            // Clean movie cards - just poster and title, clickable
             moviesHtml += `
                 <div class="col-md-3 mb-4">
-                    <div class="card h-100 shadow-sm">
+                    <div class="card h-100 shadow-sm movie-card" onclick="MovieService.openMovieDetails(${movie.id})" style="cursor: pointer;">
                         <div class="position-relative">
-                            ${movie.trailer_url ? `
-                                <div class="card-img-overlay d-flex justify-content-center align-items-center">
-                                    <a href="${movie.trailer_url}" target="_blank" class="text-white">
-                                        <i class="fas fa-play-circle fa-3x"></i>
-                                    </a>
-                                </div>
-                            ` : ''}
                             <img src="${movie.image_url || 'assets/img/default-movie.jpg'}" 
                                  class="card-img-top" alt="${movie.title}" 
-                                 style="height: 300px; object-fit: cover;">
+                                 style="height: 400px; object-fit: cover;">
                         </div>
-                        <div class="card-body d-flex flex-column">
+                        <div class="card-body text-center">
                             <h5 class="card-title">${movie.title}</h5>
-                            <p class="card-text flex-grow-1">${movie.description || 'No description available.'}</p>
-                            <div class="mb-2">
-                                <small class="text-muted">
-                                    <strong>${movie.genre || 'Unknown'}</strong> • 
-                                    ${movie.release_year} • 
-                                    ⭐ ${movie.rating || 'N/A'}/10
-                                </small>
-                            </div>
-                            ${adminButtons}
                         </div>
                     </div>
                 </div>
@@ -162,7 +133,74 @@ var MovieService = {
         moviesSection.html(moviesHtml);
     },
 
-    // CRUD operations for admin users
+    openMovieDetails: function(movieId) {
+    RestClient.get('movies/' + movieId, function(movie) {
+        const isAdmin = UserService.isAdmin();
+        const isLoggedIn = UserService.isLoggedIn();
+        
+        // Build user action buttons if user is logged in
+        const userButtons = isLoggedIn ? `
+            <div class="mt-3">
+                <button type="button" class="btn btn-success me-2" 
+                        onclick="FavoriteService.addToFavorites(${movie.id}, '${movie.title.replace(/'/g, "\\'")}');">
+                    ⭐ Add to Favorites
+                </button>
+            </div>
+        ` : '';
+        
+        // Build admin buttons if user is admin
+        const adminButtons = isAdmin ? `
+        <div class="mt-3">
+            <hr>
+            <h6>Admin Actions:</h6>
+         <button type="button" class="btn btn-info me-2"
+                    onclick="RecommendationService.addMovieToRecommendations(${movie.id}, '${movie.title.replace(/'/g, "\\'")}');">
+             Add to Recommendations
+            </button>
+            <button type="button" class="btn btn-warning me-2"
+                    onclick="MovieService.closeMovieDetails(); MovieService.openEditModal(${movie.id});">
+                Edit Movie
+            </button>
+            <button type="button" class="btn btn-danger"
+                    onclick="MovieService.closeMovieDetails(); MovieService.openConfirmationDialog(${movie.id}, '${movie.title.replace(/'/g, "\\'")}');">
+                Delete Movie
+            </button>
+        </div>
+    ` : '';
+        
+        // Build the modal content
+        const modalContent = `
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="${movie.image_url || 'assets/img/default-movie.jpg'}" 
+                         class="img-fluid rounded" alt="${movie.title}">
+                </div>
+                <div class="col-md-8">
+                    <h3>${movie.title}</h3>
+                    <p class="text-muted mb-3">
+                        <strong>${movie.genre || 'Unknown'}</strong> • 
+                        ${movie.release_year} • 
+                        ⭐ ${movie.rating || 'N/A'}/10
+                    </p>
+                    <p>${movie.description || 'No description available.'}</p>
+                    ${userButtons}
+                    ${adminButtons}
+                </div>
+            </div>
+        `;
+        
+        // Update modal content and show
+        $('#movieDetailsModal .modal-title').text(movie.title);
+        $('#movieDetailsModal .modal-body').html(modalContent);
+        $('#movieDetailsModal').modal('show');
+        
+    }, function(error) {
+        toastr.error("Failed to load movie details");
+    });
+    },
+    closeMovieDetails: function() {
+        $('#movieDetailsModal').modal('hide');
+    },
     openAddModal: function() {
         if (!UserService.requireAdmin()) return;
         $('#addMovieModal').modal('show');
@@ -215,6 +253,7 @@ var MovieService = {
         $('#editMovieModal').modal('hide');
         $('#deleteMovieModal').modal('hide');
         $('#addMovieModal').modal('hide');
+        $('#movieDetailsModal').modal('hide');
     },
 
     editMovie: function(movie) {
@@ -239,7 +278,7 @@ var MovieService = {
         if (!UserService.requireAdmin()) return;
         
         $('#deleteMovieModal').modal('show');
-        $('#delete-movie-body').html("Do you want to delete movie: " + movieTitle+ "?");
+        $('#delete-movie-body').html("Do you want to delete movie: " + movieTitle);
         $('#delete_movie_id').val(movieId);
     },
 

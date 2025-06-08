@@ -6,6 +6,16 @@ class RecommendationDao extends BaseDao {
     public function __construct() {
         parent::__construct("recommendations");
     }
+    public function getAll() {
+        $stmt = $this->connection->prepare("
+            SELECT r.*, m.title, m.description, m.genre, m.release_year, m.rating, m.image_url
+            FROM recommendations r
+            JOIN movies m ON r.movie_id = m.id
+            ORDER BY r.created_at DESC
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
     
     public function getByUserId($userId) {
         $stmt = $this->connection->prepare("SELECT * FROM recommendations WHERE user_id = :user_id");

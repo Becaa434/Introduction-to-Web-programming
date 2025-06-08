@@ -9,138 +9,27 @@
     <h2 class="mb-4 text-center">Movie Reviews</h2>
     <p class="text-center">Read what our community thinks about these movies</p>
 
-    <!-- Featured Reviews Section -->
-    <h3 class="mb-4 text-center">Featured Reviews</h3>
-    <div class="row justify-content-center">
-        
-        <!-- Review Card 1 -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="assets/img/movie1.jpg" class="rounded me-3" alt="Flow" style="width: 80px; height: 120px; object-fit: cover;">
-                        <div>
-                            <h5 class="card-title mb-1">Flow</h5>
-                            <div class="mb-2">
-                                <span class="text-warning">⭐⭐⭐⭐⭐</span>
-                                <small class="text-muted ms-2">5.0/5</small>
-                            </div>
-                            <small class="text-muted">Reviewed by Alex K.</small>
-                        </div>
-                    </div>
-                    <p class="card-text">"An absolutely stunning piece of animation! The story of survival told without words is incredibly moving. The visuals are breathtaking and the emotional journey is unforgettable. A masterpiece that proves animation can be deeply profound."</p>
-                    <small class="text-muted">Posted 2 days ago</small>
-                </div>
+    <!-- Dynamic Reviews Section -->
+    <div class="row justify-content-center" id="reviewsSection">
+        <!-- Dynamic review content will be loaded here by ReviewService -->
+        <div class="col-12 text-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading reviews...</span>
             </div>
+            <p class="mt-2">Loading movie reviews...</p>
         </div>
-
-        <!-- Review Card 2 -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="assets/img/movie7.jpg" class="rounded me-3" alt="Dune" style="width: 80px; height: 120px; object-fit: cover;">
-                        <div>
-                            <h5 class="card-title mb-1">Dune</h5>
-                            <div class="mb-2">
-                                <span class="text-warning">⭐⭐⭐⭐⭐</span>
-                                <small class="text-muted ms-2">4.5/5</small>
-                            </div>
-                            <small class="text-muted">Reviewed by Sarah M.</small>
-                        </div>
-                    </div>
-                    <p class="card-text">"Denis Villeneuve has created a sci-fi epic that does justice to Herbert's masterpiece. The cinematography is spectacular, the score is haunting, and Timothée Chalamet delivers a powerful performance. Can't wait for Part Two!"</p>
-                    <small class="text-muted">Posted 1 week ago</small>
-                </div>
-            </div>
-        </div>
-
-        <!-- Review Card 3 -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="assets/img/movie2.jpg" class="rounded me-3" alt="Avatar" style="width: 80px; height: 120px; object-fit: cover;">
-                        <div>
-                            <h5 class="card-title mb-1">Avatar</h5>
-                            <div class="mb-2">
-                                <span class="text-warning">⭐⭐⭐⭐</span>
-                                <small class="text-muted ms-2">4.0/5</small>
-                            </div>
-                            <small class="text-muted">Reviewed by Mike R.</small>
-                        </div>
-                    </div>
-                    <p class="card-text">"A visual revolution in cinema! While the story is somewhat predictable, the world-building of Pandora is extraordinary. James Cameron's attention to detail creates an immersive experience that changed filmmaking forever."</p>
-                    <small class="text-muted">Posted 1 week ago</small>
-                </div>
-            </div>
-        </div>
-
-        <!-- Review Card 4 -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="assets/img/movie5.jpg" class="rounded me-3" alt="Up" style="width: 80px; height: 120px; object-fit: cover;">
-                        <div>
-                            <h5 class="card-title mb-1">Up</h5>
-                            <div class="mb-2">
-                                <span class="text-warning">⭐⭐⭐⭐⭐</span>
-                                <small class="text-muted ms-2">4.8/5</small>
-                            </div>
-                            <small class="text-muted">Reviewed by Emma L.</small>
-                        </div>
-                    </div>
-                    <p class="card-text">"Pixar at its finest! The opening sequence alone is worth the price of admission. A beautiful story about adventure, friendship, and letting go. It made me laugh and cry - often at the same time. Perfect for all ages."</p>
-                    <small class="text-muted">Posted 3 days ago</small>
-                </div>
-            </div>
-        </div>
-
-        <!-- Review Card 5 -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="assets/img/movie6.jpg" class="rounded me-3" alt="The Dark Knight Rises" style="width: 80px; height: 120px; object-fit: cover;">
-                        <div>
-                            <h5 class="card-title mb-1">The Dark Knight Rises</h5>
-                            <div class="mb-2">
-                                <span class="text-warning">⭐⭐⭐⭐</span>
-                                <small class="text-muted ms-2">3.8/5</small>
-                            </div>
-                            <small class="text-muted">Reviewed by James T.</small>
-                        </div>
-                    </div>
-                    <p class="card-text">"A satisfying conclusion to Nolan's Batman trilogy. Tom Hardy's Bane is a formidable villain, and the scale is epic. While it doesn't quite reach the heights of The Dark Knight, it's still a solid superhero film with great action sequences."</p>
-                    <small class="text-muted">Posted 5 days ago</small>
-                </div>
-            </div>
-        </div>
-
-        <!-- Review Card 6 -->
-        <div class="col-md-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="assets/img/movie3.jpg" class="rounded me-3" alt="Jurassic World" style="width: 80px; height: 120px; object-fit: cover;">
-                        <div>
-                            <h5 class="card-title mb-1">Jurassic World</h5>
-                            <div class="mb-2">
-                                <span class="text-warning">⭐⭐⭐</span>
-                                <small class="text-muted ms-2">3.2/5</small>
-                            </div>
-                            <small class="text-muted">Reviewed by Lisa P.</small>
-                        </div>
-                    </div>
-                    <p class="card-text">"Fun popcorn entertainment with impressive dinosaur effects. While it lacks the wonder and intelligence of the original Jurassic Park, it delivers on action and spectacle. Chris Pratt brings charm to his role as the raptor trainer."</p>
-                    <small class="text-muted">Posted 1 week ago</small>
-                </div>
-            </div>
-        </div>
-
     </div>
-
-
-  
 </div>
+
+<script>
+$(document).ready(function() {
+    console.log("Reviews page loaded, initializing ReviewService...");
+    
+    // Initialize ReviewService when the reviews page loads
+    if (typeof ReviewService !== 'undefined') {
+        ReviewService.init();
+    } else {
+        console.error("ReviewService not found!");
+    }
+});
+</script>

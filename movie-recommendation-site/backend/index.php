@@ -55,11 +55,12 @@ Flight::route('/*', function() {
     $publicRoutes = [
         '/auth/login',
         '/auth/register',
-        '/movies', // Allow public access to movies listing
+        '/movies', // Allow public access to movies
+        '/recommendations',
         '/public',
         '/docs',
         '/swagger',
-        '/test' // Include test route as well
+        '/test' 
     ];
    
     $currentPath = Flight::request()->url;

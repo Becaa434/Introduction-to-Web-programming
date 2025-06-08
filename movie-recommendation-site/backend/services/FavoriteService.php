@@ -7,6 +7,11 @@ class FavoriteService extends BaseService {
         $dao = new FavoriteDao();
         parent::__construct($dao);
     }
+
+ 
+     public function getUserFavoriteMovies($userId) {
+            return $this->dao->getUserFavoriteMovies($userId);
+}
     
     // Business logic for adding a favorite
     public function addFavorite($data) {

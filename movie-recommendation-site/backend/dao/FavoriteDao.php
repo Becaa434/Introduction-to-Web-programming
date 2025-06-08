@@ -6,6 +6,14 @@ class FavoriteDao extends BaseDao {
     public function __construct() {
         parent::__construct("favorites");
     }
+  
+    public function getByUserAndMovie($userId, $movieId) {
+        $stmt = $this->connection->prepare("SELECT * FROM favorites WHERE user_id = :user_id AND movie_id = :movie_id");
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':movie_id', $movieId);
+        $stmt->execute();
+        return $stmt->fetch();
+}
     
     public function getByUserId($userId) {
         $stmt = $this->connection->prepare("SELECT * FROM favorites WHERE user_id = :user_id");

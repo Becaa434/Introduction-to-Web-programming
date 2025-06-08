@@ -1,0 +1,18 @@
+echo # Dependencies > .gitignore
+echo backend/vendor/ >> .gitignore
+echo node_modules/ >> .gitignore
+echo. >> .gitignore
+echo # Environment variables >> .gitignore
+echo .env >> .gitignore
+echo .env.local >> .gitignore
+echo. >> .gitignore
+echo # IDE files >> .gitignore
+echo .vscode/ >> .gitignore
+echo .idea/ >> .gitignore
+echo. >> .gitignore
+echo # OS files >> .gitignore
+echo .DS_Store >> .gitignore
+echo Thumbs.db >> .gitignore
+echo. >> .gitignore
+echo # Logs >> .gitignore
+echo *.log >> .gitignore
