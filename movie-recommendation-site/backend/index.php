@@ -4,7 +4,8 @@ require 'dao/config.php';
 require 'middleware/AuthMiddleware.php';
 require 'data/Roles.php';
 
-Flight::set('flight.base_url', '/');
+// Set base URL based on the current script directory
+Flight::set('flight.base_url', '/AdiBeca/Introduction-to-Web-programming/movie-recommendation-site/backend');
 
 // Include all service files
 require 'services/UserService.php';
