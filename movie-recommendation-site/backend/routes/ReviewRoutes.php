@@ -80,10 +80,6 @@ Flight::route('GET /movies/@id/reviews', function($id){
  *     )
  * )
  */
-Flight::route('GET /users/@id/reviews', function($id){
-    Flight::json(Flight::reviewService()->getByUserId($id));
-});
-
 /**
  * @OA\Post(
  *     path="/reviews",
@@ -93,25 +89,27 @@ Flight::route('GET /users/@id/reviews', function($id){
  *         required=true,
  *         @OA\JsonContent(
  *             required={"user_id", "movie_id", "rating", "comment"},
- *             @OA\Property(property="user_id", type="integer", example=1),
- *             @OA\Property(property="movie_id", type="integer", example=1),
- *             @OA\Property(property="rating", type="number", format="float", example=4.5),
- *             @OA\Property(property="comment", type="string", example="Great movie, highly recommend it!")
+ *             @OA\Property(property="user_id", type="integer"),
+ *             @OA\Property(property="movie_id", type="integer"),
+ *             @OA\Property(property="rating", type="number"),
+ *             @OA\Property(property="comment", type="string")
  *         )
- *     ),
- *     @OA\Response(
- *         response=200,
- *         description="Review created successfully"
- *     ),
- *     @OA\Response(
- *         response=400,
- *         description="Invalid input data"
  *     )
  * )
  */
 Flight::route('POST /reviews', function(){
-    $data = Flight::request()->data->getData();
-    Flight::json(Flight::reviewService()->createReview($data));
+    try {
+        $data = Flight::request()->data->getData();
+        $result = Flight::reviewService()->create($data);
+        
+        if ($result) {
+            Flight::json(['message' => 'Review submitted successfully']);
+        } else {
+            Flight::halt(400, json_encode(['message' => 'Failed to submit review']));
+        }
+    } catch (\Exception $e) {
+        Flight::halt(400, json_encode(['message' => $e->getMessage()]));
+    }
 });
 
 /**
@@ -155,25 +153,37 @@ Flight::route('PUT /reviews/@id', function($id){
  * @OA\Delete(
  *     path="/reviews/{id}",
  *     tags={"reviews"},
- *     summary="Delete review",
+ *     summary="Delete review (Admin only)",
  *     @OA\Parameter(
  *         name="id",
  *         in="path",
  *         required=true,
  *         description="ID of the review to delete",
  *         @OA\Schema(type="integer", example=1)
- *     ),
- *     @OA\Response(
- *         response=200,
- *         description="Review deleted successfully"
- *     ),
- *     @OA\Response(
- *         response=404,
- *         description="Review not found"
  *     )
  * )
  */
 Flight::route('DELETE /reviews/@id', function($id){
-    Flight::json(Flight::reviewService()->delete($id));
+    try {
+        // Get authentication token
+        $token = Flight::request()->getHeader('Authentication') ?: 
+                 Flight::request()->getHeader('Authorization');
+        
+        // Verify token first
+        Flight::auth_middleware()->verifyToken($token);
+        
+        // Check if user is admin
+        Flight::auth_middleware()->authorizeRole('admin');
+        
+        $result = Flight::reviewService()->delete($id);
+        
+        if ($result) {
+            Flight::json(['message' => 'Review deleted successfully']);
+        } else {
+            Flight::halt(404, json_encode(['message' => 'Review not found']));
+        }
+    } catch (\Exception $e) {
+        $statusCode = (strpos($e->getMessage(), 'Access denied') !== false) ? 403 : 401;
+        Flight::halt($statusCode, json_encode(['message' => $e->getMessage()]));
+    }
 });
-?>

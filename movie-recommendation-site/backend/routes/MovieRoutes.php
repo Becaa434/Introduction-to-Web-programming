@@ -415,7 +415,7 @@ Flight::route('GET /user/movies/favorites', function() {
         Flight::auth_middleware()->verifyToken($token);
         
         // Allow both user and admin roles
-        Flight::auth_middleware()->authorizeRole(['user', 'admin']);
+        Flight::auth_middleware()->authorizeRoles(['user', 'admin']);
         
         $user = Flight::get('user');
         $userId = is_object($user) ? $user->id : $user['id'];
@@ -476,7 +476,7 @@ Flight::route('POST /user/movies/favorites/@movie_id', function($movie_id) {
         Flight::auth_middleware()->verifyToken($token);
         
         // Allow both user and admin roles
-        Flight::auth_middleware()->authorizeRole(['user', 'admin']);
+        Flight::auth_middleware()->authorizeRoles(['user', 'admin']);
         
         $user = Flight::get('user');
         $userId = is_object($user) ? $user->id : $user['id'];
@@ -549,7 +549,7 @@ Flight::route('DELETE /user/movies/favorites/@movie_id', function($movie_id) {
         Flight::auth_middleware()->verifyToken($token);
         
         // Allow both user and admin roles
-        Flight::auth_middleware()->authorizeRole(['user', 'admin']);
+        Flight::auth_middleware()->authorizeRoles(['user', 'admin']);
         
         $user = Flight::get('user');
         $userId = is_object($user) ? $user->id : $user['id'];

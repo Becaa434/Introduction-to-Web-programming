@@ -1,4 +1,4 @@
-# Movie Recommendation Site
+Movie Recommendation System
 
 ## Overview
 A modern web application for exploring and managing movies with role-based access control. The application provides a comprehensive movie browsing experience with admin management capabilities and community-driven content.

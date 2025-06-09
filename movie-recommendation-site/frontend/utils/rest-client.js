@@ -7,6 +7,7 @@ let RestClient = {
                 const token = localStorage.getItem("user_token");
                 if (token) {
                     xhr.setRequestHeader("Authentication", token);
+                    xhr.setRequestHeader("Authorization", "Bearer " + token);
                 }
             },
             success: function (response) {
@@ -30,6 +31,8 @@ let RestClient = {
     },
     
     request: function (url, method, data, callback, error_callback) {
+        console.log(`Making ${method} request to:`, Constants.PROJECT_BASE_URL + "/" + url);
+        
         $.ajax({
             url: Constants.PROJECT_BASE_URL + "/" + url,
             type: method,
@@ -40,6 +43,8 @@ let RestClient = {
                 const token = localStorage.getItem("user_token");
                 if (token) {
                     xhr.setRequestHeader("Authentication", token);
+                    xhr.setRequestHeader("Authorization", "Bearer " + token);
+                    console.log("Token being sent:", token.substring(0, 20) + "...");
                 }
             },
         })
@@ -67,6 +72,8 @@ let RestClient = {
     },
     
     delete: function (url, data, callback, error_callback) {
+        console.log("Making DELETE request to:", Constants.PROJECT_BASE_URL + "/" + url);
+        
         $.ajax({
             url: Constants.PROJECT_BASE_URL + "/" + url,
             type: "DELETE",
@@ -74,6 +81,8 @@ let RestClient = {
                 const token = localStorage.getItem("user_token");
                 if (token) {
                     xhr.setRequestHeader("Authentication", token);
+                    xhr.setRequestHeader("Authorization", "Bearer " + token);
+                    console.log("Token being sent:", token.substring(0, 20) + "...");
                 }
             },
         })

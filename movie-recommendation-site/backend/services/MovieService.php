@@ -15,7 +15,7 @@ class MovieService extends BaseService {
     }
 
     public function getById($id) {
-        return $this->dao->getById((int)$id); // Always just return, no throw
+        return $this->dao->getById((int)$id); 
     }
 
     public function getByGenre($genre) {

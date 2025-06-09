@@ -6,6 +6,27 @@ class ReviewDao extends BaseDao {
     public function __construct() {
         parent::__construct("reviews");
     }
+
+    public function getAll() {
+        $stmt = $this->connection->prepare("
+            SELECT 
+                r.id,
+                r.user_id,
+                r.movie_id,
+                r.rating,
+                r.comment,
+                r.created_at,
+                m.title as movie_title,
+                m.image_url,
+                u.name as user_name
+            FROM reviews r
+            JOIN movies m ON r.movie_id = m.id
+            JOIN users u ON r.user_id = u.id
+            ORDER BY r.created_at DESC
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
     
     public function getByUserId($userId) {
         $stmt = $this->connection->prepare("SELECT * FROM reviews WHERE user_id = :user_id");
@@ -29,10 +50,5 @@ class ReviewDao extends BaseDao {
         return $stmt->fetch();
     }
     
-    public function getRecentReviews($limit = 10) {
-        $stmt = $this->connection->prepare("SELECT * FROM reviews ORDER BY created_at DESC LIMIT :limit");
-        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
+
 }
